@@ -31,7 +31,9 @@ This is a single-phase Wilcox (2006) k-omega turbulence model with stress-limite
 
 
 ## Installation
+
 Download the repository
+      
         git clone https://github.com/LiYZPearl/ReynoldsStressTurbulenceModels 
 
 Create folder for turbulence model (if the folders already exist skip this part)

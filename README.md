@@ -2,7 +2,7 @@
 Reynolds stress turbulence closure models beyond the Boussinesq approximation
 
 The RSM in terms of the Wilcox (2006) stress-omega model is implemented with an additional buoyancy production term for simulating multiphase flows. 
-Test cases including a turbulence wave boundary layer simulation (Jensen et al. 1989, their Test 13) and a spilling breaking wave simulation (Ting & Kirby 1994, 1996) are provided.
+Test cases including a turbulent wave boundary layer simulation (Jensen et al. 1989, their Test 13) as well as spilling and plunging breaking wave simulations (Ting & Kirby 1994, 1996) are provided.
 
 The paper regarding the formal analysis and applications of the Wilcox (2006) stress-omega model has been submitted to the Journal of Fluid Mechanics. 
 

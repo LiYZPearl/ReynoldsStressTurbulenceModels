@@ -10,6 +10,19 @@ Li, Y., & Fredberg M.B., Larsen B.E. & Fuhrman, D. R. (2021). Reynolds stress tu
 
 This library is developed for OpenFOAM v1712 to v1912.
 
+#Installation
+Download the repository 
+        git clone https://github.com/LiYZPearl/ReynoldsStressTurbulenceModels
 
+Create folder for turbulence model (if the folders already exist skip this part)
 
+        mkdir -p $WM_PROJECT_USER_DIR/src/
+        Move the folder to the user source code
 
+        mv ReynoldsStressTurbulenceModels $WM_PROJECT_USER_DIR/src/
+        
+Go to the directory and compile the turbulence models
+
+       cd $WM_PROJECT_USER_DIR/src/ReynoldsStressTurbulenceModels/RSM_v1912
+
+       wmake libso

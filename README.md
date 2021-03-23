@@ -21,7 +21,8 @@ Download the repository
 Create folder for turbulence model (if the folders already exist skip this part)
 
         mkdir -p $WM_PROJECT_USER_DIR/src/
-        Move the folder to the user source code
+
+Move the folder to the user source code
 
         mv ReynoldsStressTurbulenceModels $WM_PROJECT_USER_DIR/src/
         

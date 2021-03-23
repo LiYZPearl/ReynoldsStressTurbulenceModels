@@ -36,8 +36,8 @@ This is the Wilcox (2006) k-omega turbulence model for single-phase simulations 
 ## Installation
 
 Download the repository
-      
-        git clone https://github.com/LiYZPearl/ReynoldsStressTurbulenceModels 
+
+    git clone https://github.com/LiYZPearl/ReynoldsStressTurbulenceModels 
 
 Create folder for turbulence model (if the folders already exist skip this part)
 

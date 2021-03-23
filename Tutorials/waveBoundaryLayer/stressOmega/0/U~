@@ -1,0 +1,74 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+//internalField   uniform (-0.075 0 0);
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    top
+    {
+        type            slip;
+        value           uniform (0 0 0);
+    }
+
+    bottom
+    {
+              type            movingWallVelocity;
+              value           uniform (0 0 0);
+	      //  type            slip;
+	      //value           uniform (0 0 0);
+    }
+
+
+    cyclic1
+    {
+        type            cyclic;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+    /*
+    inlet
+    {
+      //        type            fixedValue;
+      //value           uniform (0.348 0 0);
+        type            zeroGradient;
+    }
+    */
+    
+    inlet
+      {
+	type                groovyBC;
+	value               uniform (0 0 0); // Initial condition, will only be used until the first time step is complete
+	variables           "Ufc=0.02;T=1.10;Um=0.38;kappa=0.4;kN=4.75e-4;";
+	fractionExpression  "1"; // "1" here indicate that this is a Dirichlet boundary condition (0 is Neumann BC)
+	valueExpression     "vector(Ufc/kappa*log(30*pos().y/kN)+Um*sin(2*pi/T*time()), 0, 0)";
+      }
+    
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+
+}
+
+// ************************************************************************* //

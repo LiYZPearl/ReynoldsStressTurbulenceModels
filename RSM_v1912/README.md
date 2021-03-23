@@ -14,20 +14,23 @@ For any usage of RSM models please refer to  #to be updated
 	} 
 
 # Description
+
 stressOmega model: 
-This is a stress-omega turbulence model with buoyancy production terms for two-phase flow modeling e.g. free surface waves
 
-stressOmegaSinglePhase model:
-This is a stress-omega turbulence model implemented for single-phase simulations e.g. steady/wave boundary layer
+This is the Wilcox (2006) stress-omega turbulence model, with additional buoyancy production terms added (as described in Li et al. 2021), for two-phase flow modeling of e.g. free surface waves.
 
+stressOmegaSinglePhase model: 
 
-In addtion, the stablized two-equation models used as a comparsion study in Li et al. (2021) are included as:
+This is the Wilcox (2006) stress-omega turbulence model implemented for single-phase simulations involving e.g. steady/wave boundary layers.
 
-kOmegaWilcox2006Stab:
-This is a stabilized Wilcox (2006) k-omega turbulence model with stress-limiter and buoyancy production term for two-phase flow modeling e.g. free surface waves
+kOmegaWilcox2006Stab: 
 
-kOmegaWilcox2006SinglePhase:
-This is a single-phase Wilcox (2006) k-omega turbulence model with stress-limiter for single-phase simulations e.g. steady/wave boundary layer
+This is the stabilized (as detailed in Larsen and Fuhrman, 2018) version of the Wilcox (2006) k-omega turbulence model, with the additional buoyancy production term for two-phase flow modeling e.g. free surface waves.  This model is utilized for comparison with the breaking wave cases considered in Li et al. (2021).
+
+kOmegaWilcox2006SinglePhase: 
+
+This is the Wilcox (2006) k-omega turbulence model for single-phase simulations involving e.g. steady/wave boundary layers.  This model is also utilized for comparison with the wave boundary layer case considered in Li et al. (2021).
+
 
 
 ## Installation
@@ -78,6 +81,11 @@ Change the constant/turbulence
 
 
 ## References
+
+Larsen, B. E., & Fuhrman, D. R. (2018). On the over-production of turbulence beneath surface waves in Reynolds-averaged Navier–Stokes models. J. Fluid Mech, 853, 419-460.
+
+Li, Y., & Fredberg M.B., Larsen B.E. & Fuhrman, D. R. (2021). Reynolds stress turbulence modelling of breaking waves. submitted to J. Fluid Mech.
+
 Wilcox, D. C. 2006 Turbulence Modeling for CFD, 3rd edn. DCW Industries, Inc.
 
 

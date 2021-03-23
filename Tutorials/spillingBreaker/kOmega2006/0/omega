@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 -1 0 0 0 0];
+
+internalField   uniform 2.0;
+
+boundaryField
+{
+    top
+    {
+        type            slip;
+    }
+
+    bottom
+    {
+	    type		    omegaWallFunction;
+	value uniform 2.0;
+    }
+    
+
+    atmosphere
+    {
+        type            inletOutlet;
+	inletValue uniform 2.0;
+	value uniform 2.0;
+    }
+
+    frontBack
+    {
+        type            empty;
+    }
+    
+    inlet
+    {
+ type            inletOutlet;
+ inletValue uniform 2.0;
+	value uniform 2.0;	   
+    }
+    
+    /*
+    inlet
+      {
+	type                groovyBC;
+	value               uniform 1e-6; // Initial condition, will only be used until the first time step is complete
+	variables           "Ufm=0.38;T=1.10;Ufc=0.02;nu=1.0e-6;kappa=0.4;kN=4.75e-4;";
+	fractionExpression  "1"; // "1" here indicate that this is a Dirichlet boundary condition (0 is Neumann BC)
+	valueExpression     "0.0005*(Ufm+Ufc/kappa*log(30*0.015/kN))/(100*nu)*mag(Ufc/kappa*log(30*pos().y/kN)+Ufm*sin(2*pi/T*time()))";
+      }
+    */
+    outlet
+    {
+	    type		    inletOutlet;
+	    inletValue uniform 2.0;
+	    value uniform 2.0;
+    }
+}
+
+// ************************************************************************* //

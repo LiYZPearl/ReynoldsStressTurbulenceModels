@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    top
+    {
+              type            slip;
+	      //	           type            fixedValue;
+	      //   value           uniform 0.0;
+    }
+
+    bottom
+    {
+	    type		    zeroGradient;
+    }
+   
+    cyclic1
+    {
+        type            cyclic;
+    }
+
+
+    frontBack
+    {
+        type            empty;
+    }
+    inlet
+    {
+       type		    zeroGradient;
+       // type            fixedValue;
+       //   		   value           uniform 0.0; 
+      
+    }
+    outlet
+    {
+      	    type		    zeroGradient;
+      //type            fixedValue;
+      //value           uniform 0;
+    }
+atmosphere
+  {
+    type zeroGradient;
+  }
+
+}
+
+// ************************************************************************* //

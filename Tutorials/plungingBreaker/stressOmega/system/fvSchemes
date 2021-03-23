@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default Euler;
+}
+
+gradSchemes
+{
+//    default	cellLimited fourth 1;
+    default         Gauss linear;
+    grad(U)         Gauss linear;
+    grad(alpha1)     Gauss linear;
+}
+
+divSchemes
+{
+//    default	    Gauss linear;
+//    div(rho*phi,U)  Gauss SFCD; //SFCD;  //SFCD;
+   div(phi,R)      Gauss Minmod;
+   div(rho,R)   Gauss Minmod;
+   div(rhoPhi,R)   Gauss Minmod;
+   div((rho*R))  Gauss linear; //linear;
+//    div(phi,gamma)  Gauss vanLeer;
+//    div(rho*phi,U)  Gauss MUSCL;
+       div(phi,alpha)  Gauss MUSCL;
+    // div(phi,alpha)  Gauss upwind;
+    div(phirb,alpha) Gauss interfaceCompression;
+    div(phi,k)      Gauss Minmod;
+    // div(phi*interpolate(rho),k)      Gauss Minmod;
+    div(phi,omega) Gauss Minmod;
+    div(phi,epsilon) Gauss Minmod;
+    // div(phi*interpolate(rho),omega)      Gauss Minmod;
+    div(rho*phi,k)   Gauss Minmod;
+    div(rho*phi,omega)   Gauss Minmod; //upwind;
+    div(rhoPhi,U)   Gauss SFCD; //linear; //SFCD; //SFCD;
+    div(rho*phi,epsilon) Gauss Minmod;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+     div(((rho*nu)*dev2(T(grad(U))))) Gauss linear;
+     div(rhoPhi,omega)  Gauss Minmod; //Minmod
+
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+fluxRequired
+{
+    default         no;
+    p_rgh;
+    pcorr;
+    gamma;
+    alpha.water;
+}
+
+// ************************************************************************* //

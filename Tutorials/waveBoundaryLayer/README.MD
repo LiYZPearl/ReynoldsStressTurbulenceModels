@@ -5,5 +5,5 @@ https://github.com/LiYZPearl/bodyforce
 
 Then in the case folder run:
 
-        blockMesh
-        myPimpleFoam
+    blockMesh
+    myPimpleFoam

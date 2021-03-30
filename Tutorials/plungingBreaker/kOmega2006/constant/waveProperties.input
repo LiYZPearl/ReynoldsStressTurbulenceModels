@@ -27,8 +27,8 @@ inletCoeffs
     // Wave type to be used at boundary "inlet" and in relaxation zone "inlet"
     waveType    streamFunction;  
     
-    // Ramp time of 2 s
-    Tsoft       0.0;
+    // Ramp time of 5 s
+    Tsoft       5.0;
 
     // Water depth at the boundary and in the relaxation zone
     depth       0.4;

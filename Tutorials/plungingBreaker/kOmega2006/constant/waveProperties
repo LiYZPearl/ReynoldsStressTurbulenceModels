@@ -24,7 +24,7 @@ inletCoeffs
 {
     waveType            streamFunction;
     N                   32;
-    Tsoft               0;
+    Tsoft               5.0;
     depth               0.4;
     phi                 0;
     height              0.128;

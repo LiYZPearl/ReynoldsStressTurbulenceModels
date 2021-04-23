@@ -19,7 +19,7 @@ simulationType  RAS;
 
 RAS
 {
-RASModel        kOmegaWilcox2006Stab; //LRRbuoyant; 
+RASModel        kOmegaWilcox2006Stab;
 
 turbulence      on;
 

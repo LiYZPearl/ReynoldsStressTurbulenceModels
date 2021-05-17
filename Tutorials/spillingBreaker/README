@@ -4,6 +4,6 @@ For waves2Foam installation, users can refer to the link: https://openfoamwiki.n
 
 Please not that when running breaking wave simulation cases, it can occasionaly occur that the simulation blows up at some point. 
 This is due to numerical discretization problems which can be solved by reconstructing a near time step (e.g. one wave period earlier) 
-and decomposing the domain from this time step. Then resume the simulation from this time step. 
+and decomposing the domain from this time step. Then resume the simulation from here. 
 
      

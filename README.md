@@ -13,8 +13,7 @@ This library is developed for OpenFOAM v1712 to v1912.
 
 ## References (to be updated)
 
-Li, Y., Larsen B.E., & Fuhrman, D. R. (2021). Reynolds stress turbulence modelling of breaking waves. submitted to J. Fluid Mech.
-
+Li, Y., Larsen, B., & Fuhrman, D. (2022). Reynolds stress turbulence modelling of surf zone breaking waves. Journal of Fluid Mechanics, 937, A7. doi:10.1017/jfm.2022.92
 
 ## Installation
 

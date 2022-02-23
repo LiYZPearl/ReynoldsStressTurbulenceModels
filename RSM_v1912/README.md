@@ -2,15 +2,15 @@
 
 For any usage of RSM models please refer to  #to be updated 
 
-	@article{li2021,
-	title = {Reynolds stress turbulence modelling of breaking waves},
+	@article{li2022,
+	title = {Reynolds stress turbulence modelling of surf zone breaking waves},
   	language = {eng},
-  	author = {Li, Y., Fredberg M. B., Larsen, B. E. and Fuhrman, D. R.},
-	journal = {submitted J. Fluid Mech.},
-	VOLUME={},
-  	pages = {},
-  	year = {2021},
-	doi =  {},
+  	author = {Li, Y., Larsen, B. E., and Fuhrman, D. R.},
+	journal = {J. Fluid Mech.},
+	VOLUME={937},
+  	pages = {A7},
+  	year = {2022},
+	doi =  {10.1017/jfm.2022.92},
 	} 
 
 # Description

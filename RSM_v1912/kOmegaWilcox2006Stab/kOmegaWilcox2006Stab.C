@@ -300,16 +300,22 @@ void kOmegaWilcox2006Stab<BasicTurbulenceModel>::correct()
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-    //fBeta according to Wilcox 2006  - YLi
-    volTensorField GradU(fvc::grad(U));
+    //fBeta according to Wilcox 2006  - YLi 
+    /* volTensorField GradU(fvc::grad(U));
     volTensorField Omij(-skew(GradU));
     volSymmTensorField Sij(symm(GradU));
     volScalarField Chi_ = (Omij & Omij) && Sij /pow((Cmu_*omega_),3);
-    volScalarField absChi_ = mag(Chi_);
+    volScalarField absChi_ = mag(Chi_);*/
+    // revised (BJELT Nov 2024)
+    volTensorField GradU(fvc::grad(U));
+    volSymmTensorField Sij(symm(GradU));
+    volTensorField Omij(skew(GradU));
+    volSymmTensorField Shat(Sij-0.5*tr(Sij)*I);
+    volScalarField  absChi_(mag((Omij & Omij) && Shat) /pow((Cmu_*omega_),3));
+
     fBeta_ = (1.0+85.0*absChi_)/(1.0+100.0*absChi_); //This term should be 1 for 2-D
     beta_ = 0.0708*fBeta_;
 
-    
     // Calculate the Brunt-Vaisala frequency
     volScalarField N2 = gField_&fvc::grad(rho1)/rho1;
 
@@ -364,10 +370,11 @@ void kOmegaWilcox2006Stab<BasicTurbulenceModel>::correct()
       + fvm::div(rhoPhi, omega_)
       - fvm::laplacian(alpha*rho1*DomegaEff(), omega_)
      ==
-        gamma_*alpha*rho1*p0
+        gamma_*alpha*rho1*p0*omega_/omegaTilde //BJELT added omega/omegatilde
       - fvm::SuSp(((2.0/3.0)*gamma_)*alpha*rho1*divU, omega_)
       - fvm::Sp(beta_*alpha*rho1*omega_, omega_)
-      + CDkOmega*alpha*rho1 //Crossflow diffusion term to match Wilcox 2006 -YLi
+      - fvm::SuSp(-sigmad_*alpha*rho1/omega_*CDkOmega/omega_,omega_) // Cross diffusion implicit
+      //+ CDkOmega*alpha*rho1 //Crossflow diffusion explicit (alternative implementation Y. Li)
       + fvOptions(alpha, rho1, omega_)
     );
 

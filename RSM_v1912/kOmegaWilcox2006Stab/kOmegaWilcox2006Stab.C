@@ -360,8 +360,8 @@ void kOmegaWilcox2006Stab<BasicTurbulenceModel>::correct()
 	}
     }*/
    sigmad_= pos(sigmadCheck_)*sigmad0_;
-   volScalarField CDkOmega = sigmad_/omega_*(Gradk & Gradomega);
-   
+   // volScalarField CDkOmega = sigmad_/omega_*(Gradk & Gradomega); - Old version 
+   volScalarField CDkOmega = (Gradk & Gradomega); // Changed bjelt - Y Li. 2025 Feb 4, sigmad/omega term is now inside the omega eqn
 
     // Turbulence specific dissipation rate equation
     tmp<fvScalarMatrix> omegaEqn

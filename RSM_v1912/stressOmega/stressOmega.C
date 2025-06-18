@@ -185,17 +185,18 @@ stressOmega<BasicTurbulenceModel>::stressOmega
 	 IOobject::NO_WRITE
 	 )
     ),
-    k_
+   k_
     (
         IOobject
         (
             IOobject::groupName("k", alphaRhoPhi.group()),
             this->runTime_.timeName(),
             this->mesh_,
-            IOobject::MUST_READ,
+            IOobject::NO_READ,
             IOobject::AUTO_WRITE
         ),
-        this->mesh_
+     0.5*tr(this->R_)
+     //this->mesh_
     ),
     omega_
     (
